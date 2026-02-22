@@ -9,9 +9,9 @@ echo "🚀 Starting snapshot process..."
 # Run each snapshot script in sequence, so we can easily add more snapshot types in the future.
 
 # Snapshot Homebrew
-"./snapshot-brew.sh" "$2"
+"$(dirname "$0")/snapshot-brew.sh" "$2"
 
 # Snapshot repos
-"./snapshot-repos.sh" "$1" "$2"
+"$(dirname "$0")/snapshot-repos.sh" "$1" "$2"
 
 echo "🎉 All snapshots complete. Your dev state is now saved."

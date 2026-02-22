@@ -29,7 +29,7 @@ create_repo "repo1"
 create_repo "repo2"
 
 echo "2. Running first snapshot..."
-./snapshot-repos.sh "$TEST_INPUT" "$TEST_OUTPUT"
+"$(dirname "$0")/../scripts/snapshot-repos.sh" "$TEST_INPUT" "$TEST_OUTPUT"
 
 echo "--- Initial Manifest ---"
 cat "$TEST_OUTPUT/repos.tsv"
@@ -48,7 +48,7 @@ TAB=$(printf '\t')
 echo -e "repo2${TAB}no-remote${TAB}main${TAB}clean${TAB}2020-01-01" >> "$TEST_OUTPUT/repos.tsv"
 
 echo "5. Running second snapshot..."
-./snapshot-repos.sh "$TEST_INPUT" "$TEST_OUTPUT"
+"$(dirname "$0")/../scripts/snapshot-repos.sh" "$TEST_INPUT" "$TEST_OUTPUT"
 
 echo "--- Updated Manifest ---"
 cat "$TEST_OUTPUT/repos.tsv"

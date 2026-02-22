@@ -8,9 +8,9 @@ echo "🚀 Starting restore process..."
 # $3: Restore date (optional)
 
 # Restore Homebrew
-"./restore-brew.sh" "$2"
+"$(dirname "$0")/restore-brew.sh" "$2"
 
 # Restore repos
-"./restore-repos.sh" "$1" "$2" "$3"
+"$(dirname "$0")/restore-repos.sh" "$1" "$2" "$3"
 
 echo "🎉 All restores complete. Your dev state should now be restored."

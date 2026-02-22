@@ -24,7 +24,7 @@ cd - > /dev/null
 # Run initial snapshot (Date 1)
 # We will manually set the date in the manifest for testing
 echo "📸 Creating initial snapshot..."
-./snapshot-repos.sh "$TEST_INPUT" "$TEST_OUTPUT"
+"$(dirname "$0")/../scripts/snapshot-repos.sh" "$TEST_INPUT" "$TEST_OUTPUT"
 # Update date to 2024-01-01
 # Note: repos.tsv is recreated or updated. After first snapshot, it exists.
 # We use sed to change today's date to 2024-01-01
@@ -44,7 +44,7 @@ git commit -m "repo2 commit"
 cd - > /dev/null
 
 echo "📸 Creating second snapshot..."
-./snapshot-repos.sh "$TEST_INPUT" "$TEST_OUTPUT"
+"$(dirname "$0")/../scripts/snapshot-repos.sh" "$TEST_INPUT" "$TEST_OUTPUT"
 # The second snapshot will have today's date (e.g., 2026-02-22)
 TODAY=$(date +%Y-%m-%d)
 
@@ -54,7 +54,7 @@ echo "------------------------"
 
 # Test 1: Restore latest (no date)
 echo "🧪 Test 1: Restore latest (no date)"
-./restore-repos.sh "$RESTORE_TARGET/latest" "$TEST_OUTPUT"
+"$(dirname "$0")/../scripts/restore-repos.sh" "$RESTORE_TARGET/latest" "$TEST_OUTPUT"
 if [ -d "$RESTORE_TARGET/latest/repo1" ] && [ -d "$RESTORE_TARGET/latest/repo2" ]; then
     echo "✅ Test 1 Passed: Both restored."
 else
@@ -64,7 +64,7 @@ fi
 
 # Test 2: Restore to Today (Latest)
 echo "🧪 Test 2: Restore to $TODAY"
-./restore-repos.sh "$RESTORE_TARGET/today" "$TEST_OUTPUT" "$TODAY"
+"$(dirname "$0")/../scripts/restore-repos.sh" "$RESTORE_TARGET/today" "$TEST_OUTPUT" "$TODAY"
 if [ -d "$RESTORE_TARGET/today/repo1" ] && [ -d "$RESTORE_TARGET/today/repo2" ]; then
     echo "✅ Test 2 Passed: repo1 and repo2 restored."
 else

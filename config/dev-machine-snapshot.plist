@@ -8,7 +8,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>/Users/ryanshores/Developer/dev-machine-snapshot.sh</string>
+        <string>/Users/ryanshores/Developer/dev-machine-backup/scripts/snapshot.sh</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>
