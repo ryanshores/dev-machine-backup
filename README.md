@@ -11,7 +11,11 @@ Load it with `launchctl load ~/Developer/dev-machine-backup/config/dev-machine-s
 dev-state/
 ├── Brewfile          # full brew state, restorable
 ├── repos.tsv         # origin URLs + local paths + dirty status
-└── restore.sh        # optional: reads repos.tsv and re-clones
+├── restore.sh        # entry point for restoration
+└── scripts/          # restore worker scripts
+    ├── restore-brew.sh
+    └── restore-repos.sh
+```
 
 ### repo snapshot
 Creates a restorable list of all the origins in you ~/Development folder
