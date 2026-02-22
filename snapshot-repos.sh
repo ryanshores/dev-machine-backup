@@ -46,7 +46,7 @@ if [ -f "$MANIFEST" ]; then
     (awk -v FS="$TAB" -v OFS="$TAB" '{print $0, "1"}' "$TEMP_MANIFEST"; \
      tail -n +2 "$MANIFEST" | awk -v FS="$TAB" -v OFS="$TAB" '{print $0, "2"}') | \
         sort -t"$TAB" -k1,1 -k5,5r -k6,6n | \
-        awk -F"$TAB" '!seen[$1]++ {for(i=1; i<NF; i++) printf "%s%s", $i, (i==NF-1 ? ORS : FS)}' >> "$MERGED_MANIFEST"
+        awk -F"$TAB" '!seen[$1,$5]++ {for(i=1; i<NF; i++) printf "%s%s", $i, (i==NF-1 ? ORS : FS)}' >> "$MERGED_MANIFEST"
     
     mv "$MERGED_MANIFEST" "$MANIFEST"
 else
