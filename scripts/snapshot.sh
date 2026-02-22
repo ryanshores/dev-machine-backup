@@ -1,6 +1,6 @@
 #! /bin/bash
 # snapshot.sh
-
+echo "================================="
 echo "🚀 Starting snapshot process..."
 
 # Default input/output directories
@@ -31,3 +31,4 @@ cp "$(dirname "$0")/restore-repos.sh" "$OUTPUT_DIR/scripts/restore-repos.sh"
 chmod +x "$OUTPUT_DIR/restore.sh" "$OUTPUT_DIR/scripts/"*.sh
 
 echo "🎉 All snapshots complete. Your dev state is now saved."
+echo "================================="

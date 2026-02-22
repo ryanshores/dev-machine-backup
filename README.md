@@ -6,6 +6,12 @@ Load it with `launchctl load ~/Developer/dev-machine-backup/config/dev-machine-s
 
 ---
 
+### Checking the status
+show: `launchctl list | grep dev-machine-snapshot`
+kickstart: `launchctl kickstart -k "gui/$UID/com.ryanshores.dev-machine-snapshot"`
+Look for things like last exit code, state, and any throttling/backoff info.
+logs: `tail -n 200 -f /tmp/dev-machine-snapshot.log /tmp/dev-machine-snapshot.err`
+
 ## What Lives in iCloud's `dev-state/`
 ```
 dev-state/
