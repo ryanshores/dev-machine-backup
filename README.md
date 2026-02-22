@@ -2,7 +2,7 @@
 Backup you development setup. 
 
 ## Loading plist
-Load it with `launchctl load ~/Developer/dev-machine-backup/config/dev-machine-snapshot.plist`.
+Load it with `launchctl load ~/Developer/ryanshores/dev-machine-backup/config/dev-machine-snapshot.plist`.
 
 ---
 
