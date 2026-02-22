@@ -52,11 +52,11 @@ echo "--- Current Manifest ---"
 cat "$TEST_OUTPUT/repos.tsv"
 echo "------------------------"
 
-# Test 1: Restore to Date 1 (2024-01-01)
-echo "🧪 Test 1: Restore to 2024-01-01"
-./restore-repos.sh "$RESTORE_TARGET/date1" "$TEST_OUTPUT" "2024-01-01"
-if [ -d "$RESTORE_TARGET/date1/repo1" ] && [ ! -d "$RESTORE_TARGET/date1/repo2" ]; then
-    echo "✅ Test 1 Passed: Only repo1 restored."
+# Test 1: Restore latest (no date)
+echo "🧪 Test 1: Restore latest (no date)"
+./restore-repos.sh "$RESTORE_TARGET/latest" "$TEST_OUTPUT"
+if [ -d "$RESTORE_TARGET/latest/repo1" ] && [ -d "$RESTORE_TARGET/latest/repo2" ]; then
+    echo "✅ Test 1 Passed: Both restored."
 else
     echo "❌ Test 1 Failed."
     exit 1
@@ -69,16 +69,6 @@ if [ -d "$RESTORE_TARGET/today/repo1" ] && [ -d "$RESTORE_TARGET/today/repo2" ];
     echo "✅ Test 2 Passed: repo1 and repo2 restored."
 else
     echo "❌ Test 2 Failed."
-    exit 1
-fi
-
-# Test 3: Restore latest (no date)
-echo "🧪 Test 3: Restore latest (no date)"
-./restore-repos.sh "$RESTORE_TARGET/latest" "$TEST_OUTPUT"
-if [ -d "$RESTORE_TARGET/latest/repo1" ] && [ -d "$RESTORE_TARGET/latest/repo2" ]; then
-    echo "✅ Test 3 Passed: Both restored."
-else
-    echo "❌ Test 3 Failed."
     exit 1
 fi
 

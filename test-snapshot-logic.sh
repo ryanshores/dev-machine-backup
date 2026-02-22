@@ -72,13 +72,13 @@ else
     exit 1
 fi
 
-# Check for deduplication (repo2 should appear only once, and with current date)
+# Check for deduplication (repo2 should appear only once with current date)
 REPO2_COUNT=$(grep -c "repo2" "$TEST_OUTPUT/repos.tsv")
 CURRENT_DATE=$(date +%Y-%m-%d)
 if [ "$REPO2_COUNT" -eq 1 ] && grep "repo2" "$TEST_OUTPUT/repos.tsv" | grep -q "$CURRENT_DATE"; then
-    echo "✅ repo2 deduplicated and updated to current date."
+    echo "✅ repo2 deduplicated (only current entry exists)."
 else
-    echo "❌ repo2 deduplication or update failed (Count: $REPO2_COUNT)."
+    echo "❌ repo2 deduplication failed (Count: $REPO2_COUNT)."
     exit 1
 fi
 
